@@ -1,0 +1,68 @@
+#!/usr/bin/env python
+
+"""split large file into smaller chunks"""
+
+import argparse
+import errno
+import sys
+import os
+
+DEFAULT_MAX_CHUNK_SIZE = 48 * 1024 * 1024
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('-f', '--force', default=False, action='store_true')
+    parser.add_argument('-m', '--max-chunk-size', type=int, default=DEFAULT_MAX_CHUNK_SIZE)
+    parser.add_argument('-b', '--block-size', type=int)
+    parser.add_argument('input')
+    parser.add_argument('output', nargs='?')
+    opts = parser.parse_args(argv)
+    if os.path.isfile(opts.input):
+        if opts.output is None:
+            opts.output = opts.input
+        fd = os.open(opts.input, os.O_RDONLY)
+        try:
+            s = os.lseek(fd, 0, os.SEEK_END)
+            n, r = divmod(s, opts.max_chunk_size)
+            n = n + 1 if r > 0 else n
+            P, f = [], '{:s}.{{:0{:d}d}}'.format(opts.output, len('{:d}'.format(n)))
+            for i in xrange(n):
+                P.append(f.format(i))
+                if not opts.force:
+                    try:
+                        os.lstat(P[-1])
+                    except (SystemExit, KeyboardInterrupt):
+                        raise
+                    except:
+                        pass
+                    else:
+                        raise IOError(errno.EEXIST, 'file exists', P[-1])
+            C = [s / n] * n
+            for i in xrange(s % n):
+                C[i % n] += 1
+            if sum(C) != s:
+                raise RuntimeError('chunk size calculation mismatch')
+            bsize = os.fstatvfs(fd).f_bsize if opts.block_size is None else opts.block_size
+            os.lseek(fd, 0, os.SEEK_SET)
+            reader = os.fdopen(os.dup(fd), 'rb')
+            try:
+                r = reader.read
+                for p, c in zip(P, C):
+                    with open(p, 'wb') as fp:
+                        w, n = fp.write, 0
+                        while n < c:
+                            b = r(min(bsize, c - n))
+                            if not b:
+                                raise IOError(errno.EIO, 'unexpected eof during read')
+                            w(b)
+                            n += len(b)
+            finally:
+                reader.close()
+        finally:
+            os.close(fd)
+    else:
+        raise IOError(errno.ENOENT, 'file not found', opts.input)
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())

@@ -1,0 +1,8 @@
+*.caffemodel
+.DS_Store
+*.[jJ][pP]*[gG]
+*.[gG][iI][fF]
+*.[tT][iI][fF]*
+*.[pP][nN][gG]
+*.[bB][mM][pP]
+!/examples/inputs/*
