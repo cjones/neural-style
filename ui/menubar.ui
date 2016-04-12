@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MenuBar</class>
+ <widget class="QMenuBar" name="MenuBar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>22</height>
+   </rect>
+  </property>
+  <widget class="QMenu" name="app_menu">
+   <property name="title">
+    <string>Neural Style</string>
+   </property>
+   <addaction name="about_action"/>
+   <addaction name="separator"/>
+   <addaction name="prefs_action"/>
+   <addaction name="separator"/>
+   <addaction name="quit_action"/>
+  </widget>
+  <widget class="QMenu" name="file_menu">
+   <property name="title">
+    <string>File</string>
+   </property>
+   <addaction name="new_window_action"/>
+   <addaction name="close_window_action"/>
+  </widget>
+  <widget class="QMenu" name="edit_menu">
+   <property name="title">
+    <string>Edit</string>
+   </property>
+   <addaction name="undo_action"/>
+   <addaction name="redo_action"/>
+   <addaction name="separator"/>
+   <addaction name="cut_action"/>
+   <addaction name="copy_action"/>
+   <addaction name="paste_action"/>
+   <addaction name="delete_action"/>
+   <addaction name="select_all_action"/>
+   <addaction name="select_none_action"/>
+  </widget>
+  <widget class="QMenu" name="view_menu">
+   <property name="title">
+    <string>View</string>
+   </property>
+   <addaction name="enter_full_screen_action"/>
+  </widget>
+  <widget class="QMenu" name="win_menu">
+   <property name="title">
+    <string>Window</string>
+   </property>
+   <addaction name="minimize_window_action"/>
+   <addaction name="maximize_window_action"/>
+   <addaction name="separator"/>
+   <addaction name="bring_all_windows_to_front_action"/>
+   <addaction name="separator"/>
+  </widget>
+  <widget class="QMenu" name="help_menu">
+   <property name="title">
+    <string>Help</string>
+   </property>
+   <addaction name="help_action"/>
+  </widget>
+  <widget class="QMenu" name="dev_menu">
+   <property name="title">
+    <string>Develop</string>
+   </property>
+   <addaction name="run_ipython_action"/>
+  </widget>
+  <action name="about_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">About Neural Style</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">About Neural Style</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">About Neural Style</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string/>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="prefs_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Preferences…</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Preferences…</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Preferences…</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Preferences</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="quit_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Quit Neural Style</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Quit Neural Style</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Quit Neural Style</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Quit</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="new_window_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">New Window</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">New Window</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">New Window</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>New</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="close_window_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Close Window</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Close Window</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Close Window</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Close</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="undo_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Undo</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Undo</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Undo</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Undo</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="redo_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Redo</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Redo</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Redo</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Redo</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="cut_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Cut</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Cut</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Cut</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Cut</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="copy_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Copy</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Copy</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Copy</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Copy</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="paste_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Paste</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Paste</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Paste</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Paste</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="delete_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Delete</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Delete</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Delete</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Delete</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="select_all_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Select All</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Select All</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Select All</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>SelectAll</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="select_none_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Select None</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Select None</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Select None</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>Deselect</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="enter_full_screen_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Enter Full Screen</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Enter Full Screen</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Enter Full Screen</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>FullScreen</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="minimize_window_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Minimize</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Minimize</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Minimize</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+M</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string/>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="maximize_window_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Maximize</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Maximize</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Maximize</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string/>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="bring_all_windows_to_front_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Bring All to Front</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Bring All to Front</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Bring All to Front</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string/>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="help_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Neural Style Help</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Neural Style Help</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Neural Style Help</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string>HelpContents</string>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <action name="run_ipython_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string notr="true">Run IPython</string>
+   </property>
+   <property name="iconText">
+    <string notr="true">Run IPython</string>
+   </property>
+   <property name="toolTip">
+    <string notr="true">Run IPython</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
+   </property>
+   <property name="autoRepeat">
+    <bool>false</bool>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+   <property name="iconVisibleInMenu">
+    <bool>false</bool>
+   </property>
+   <property name="standard_shortcut" stdset="0">
+    <string/>
+   </property>
+   <property name="action_group" stdset="0">
+    <string/>
+   </property>
+  </action>
+  <addaction name="app_menu"/>
+  <addaction name="file_menu"/>
+  <addaction name="edit_menu"/>
+  <addaction name="view_menu"/>
+  <addaction name="dev_menu"/>
+  <addaction name="win_menu"/>
+  <addaction name="help_menu"/>
+ </widget>
+ <resources>
+  <include location="../media.qrc"/>
+ </resources>
+ <connections/>
+</ui>

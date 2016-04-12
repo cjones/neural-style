@@ -1,0 +1,82 @@
+#!/usr/bin/env python
+
+"""generate qrc from resource directory"""
+
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
+
+import argparse
+import sys
+import os
+
+from xml.etree import ElementTree as etree
+from os.path import *
+
+__version__ = '0.1'
+__author__ = 'Chris Jones <cjones@gmail.com>'
+__license__ = 'BSD (2-clause)'
+__all__ = ['mkqrc']
+
+ENCODING = locale.getpreferredencoding()
+PREFIX = '/'
+EXT = '.qrc'
+
+def mkel(tag, parent=None, text=None, tail=None, attrib=None, **extra):
+    el = (etree.Element if parent is None else parent.makeelement)(tag,
+            extra if attrib is None else dict(attrib, **extra))
+    el.text, el.tail = text, tail
+    if parent is not None:
+        parent.append(el)
+    return el
+
+
+def mkqrc(input, output, prefix=None, encoding=None):
+    input = abspath(input)
+    if output is None:
+        outdir = dirname(input)
+        output = join(outdir, basename(input) + EXT)
+    else:
+        output = abspath(output)
+        outdir = dirname(output)
+    if prefix is None:
+        prefix = PREFIX
+    if encoding is None:
+        encoding = ENCODING
+
+    tree = etree.ElementTree(mkel('RCC'))
+    files = None
+
+    for basedir, subdirs, filenames in os.walk(input):
+        for filename in filenames:
+            if splitext(filename)[1].lower() != EXT:
+                path = join(basedir, filename)
+                if not islink(path):
+                    if files is None:
+                        files = mkel('qresource', tree.getroot(), prefix=prefix)
+                    mkel('file', files, relpath(path, outdir))
+
+    with open(output, 'w') as fp:
+        tree.write(fp, xml_declaration=False, encoding=encoding)
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__, add_help=False)
+    _ = parser.add_argument_group('options').add_argument
+    _('-h', action='help',
+            help='show this help message and exit')
+    _('-v', action='version', version=__version__,
+            help="show program's version number and exit")
+    _('-p', dest='prefix', default=PREFIX, metavar='<prefix>',
+            help='append prefix to file paths [%(default)s]')
+    _('-e', dest='encoding', default=ENCODING, metavar='<charset>',
+            help='character encoding of output file [%(default)s]')
+    _(      dest='input', metavar='<rcdir>',
+            help='directory containing resources')
+    _(      dest='output', nargs='?', metavar='<output>',
+            help='output file to write xml [${rcdir}.qrc]')
+    mkqrc(**vars(parser.parse_args(argv)))
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())

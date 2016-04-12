@@ -1,3 +1,7 @@
+*.tmp
+*.log
+*.bak
+*~
 *.caffemodel
 .DS_Store
 *.[jJ][pP]*[gG]
@@ -6,3 +10,8 @@
 *.[pP][nN][gG]
 *.[bB][mM][pP]
 !/examples/inputs/*
+!/media/*
+*.py[co]
+*.qrc
+/lib/python/*_ui.py
+/lib/python/*_rc.py
